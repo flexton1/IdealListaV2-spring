@@ -30,10 +30,10 @@ class MailService {
         };
         try {
             mailSender.send(messagePreparator);
-            log.info("Activation email sent!");
+            log.info("Aktivacijski mail poslan");
         } catch (MailException e) {
             log.error("Exception occurred when sending mail", e);
-            throw new SpringIdealListaException("Exception occurred when sending mail to " + notificationEmail.getRecipient(), e);
+            throw new SpringIdealListaException("Neuspjelo slanje maila na mail:" + notificationEmail.getRecipient(), e);
         }
     }
 

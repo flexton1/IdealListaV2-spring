@@ -63,12 +63,12 @@ public class AuthService {
         Jwt principal = (Jwt) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
         return userRepository.findByUsername(principal.getSubject())
-                .orElseThrow(() -> new UsernameNotFoundException("User name not found - " + principal.getSubject()));
+                .orElseThrow(() -> new UsernameNotFoundException("Korisničko ime nije pronađeno - " + principal.getSubject()));
     }
 
     private void fetchUserAndEnable(VerificationToken verificationToken) {
         String username = verificationToken.getUser().getUsername();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringIdealListaException("User not found with name - " + username));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringIdealListaException("Korisnik sa imenom" + username + "nije pronađen"));
         user.setEnabled(true);
         userRepository.save(user);
     }
@@ -85,7 +85,7 @@ public class AuthService {
 
     public void verifyAccount(String token) {
         Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
-        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringIdealListaException("Invalid Token")));
+        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringIdealListaException("Token nije validan")));
     }
 
     public AuthenticationResponse login(LoginRequest loginRequest) {
