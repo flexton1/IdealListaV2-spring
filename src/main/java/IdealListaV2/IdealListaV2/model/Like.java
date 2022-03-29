@@ -29,7 +29,7 @@ public class Like {
     //ManyToMany Mapping (Many users can give like to many songs)
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-        joinColumns = { @JoinColumn(name = "userid") }, 
+        joinColumns = { @JoinColumn(name = "userId") }, 
         inverseJoinColumns = { @JoinColumn(name = "likeId") }
     )
     private List<User> likedUser;

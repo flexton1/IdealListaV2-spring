@@ -17,7 +17,7 @@ public class Song {
     @GeneratedValue(generator="uuid1")
     @GenericGenerator(name="uuid1", strategy="uuid2")
     private String musicId;
-    private String musicName;   
+    public String musicName;   
     private String musicPosterUrl;
     private String musicUrl;
     private String musicAlbum;

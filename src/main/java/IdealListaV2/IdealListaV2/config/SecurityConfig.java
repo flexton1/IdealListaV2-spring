@@ -62,12 +62,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                         .antMatchers(HttpMethod.GET, "/api/posts/**")
                         .permitAll()
+                        .antMatchers(HttpMethod.POST, "/api/files/**")
+                        .permitAll()
+                        .antMatchers(HttpMethod.GET, "/api/files/**")
+                        .permitAll()
                         .antMatchers("/v2/api-docs",
                                 "/configuration/ui",
                                 "/swagger-resources/**",
                                 "/configuration/security",
                                 "/swagger-ui.html",
-                                "/webjars/**")
+                                "/webjars/**",
+                                "/api/files/upload",
+                                "/api/files/files",
+                                "http://localhost:4200/")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
