@@ -19,6 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .exposedHeaders("Authorization");
                 
+                
     }
 
     @Override

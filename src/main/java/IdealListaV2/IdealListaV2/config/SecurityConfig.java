@@ -64,6 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                         .antMatchers(HttpMethod.POST, "/api/files/**")
                         .permitAll()
+                        .antMatchers(HttpMethod.POST, "/api/auth/**")
+                        .permitAll()
+                        .antMatchers(HttpMethod.POST, "/api/auth/login")
+                        .permitAll()
                         .antMatchers(HttpMethod.GET, "/api/files/**")
                         .permitAll()
                         .antMatchers("/v2/api-docs",
@@ -74,7 +78,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                 "/webjars/**",
                                 "/api/files/upload",
                                 "/api/files/files",
-                                "http://localhost:4200/")
+                                "http://localhost:4200/",
+                                "/api/auth/login",
+                                "/login",
+                                "/files/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
