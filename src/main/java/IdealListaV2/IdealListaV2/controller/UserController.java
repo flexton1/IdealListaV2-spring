@@ -45,7 +45,7 @@ public class UserController {
     @PutMapping("/userEdit/{id}")
     public User userUpdate(@RequestBody User user, @PathVariable String id){
         User userM = userService.findById(id);
-        user.setUserId(id);
+        user.setId(id);
         if(user.getUsername()!=null){
             userM.setUsername(user.getUsername());
         }
