@@ -2,8 +2,10 @@ package IdealListaV2.IdealListaV2.service;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
+import IdealListaV2.IdealListaV2.model.FileDB;
 import IdealListaV2.IdealListaV2.model.Song;
 import IdealListaV2.IdealListaV2.repository.SongRepository;
 import lombok.AllArgsConstructor;
@@ -14,10 +16,13 @@ import lombok.AllArgsConstructor;
 public class SongService {
     private final SongRepository musicRepo;
 
-    public Song addMusic(Song music){
-        Song newMusic = musicRepo.save(music);
-		return newMusic;
-    }
+	//dont work
+    // public Song addMusic(FileDB music, String fileName){
+	// 	Song song = new Song();
+	// 	song.musicName = fileName;
+	// 	Song newMusic = musicRepo.save(song);
+	// 	return newMusic;
+    // }
 
     public List<Song> allMusic(String keyword){
 		if(keyword!=null){

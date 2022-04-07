@@ -25,12 +25,7 @@ import lombok.AllArgsConstructor;
 public class SongController {
     private final SongService musicService;
   
-    //Add song to db
-   @PostMapping("/addmusic")
-   public Song addNewMusic(@RequestBody Song image){
-               Song music = musicService.addMusic(image);
-               return music;
-   }
+  
 
    //Get all songs for admin
    @GetMapping("/admin/music ")
@@ -69,6 +64,7 @@ public class SongController {
        musicService.deleteMusic(id);
    }
 
+  
 
    
     

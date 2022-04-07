@@ -1,17 +1,5 @@
 package IdealListaV2.IdealListaV2.service;
 
-import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import IdealListaV2.IdealListaV2.dto.AuthenticationResponse;
 import IdealListaV2.IdealListaV2.dto.LoginRequest;
 import IdealListaV2.IdealListaV2.dto.RefreshTokenRequest;
@@ -23,6 +11,17 @@ import IdealListaV2.IdealListaV2.model.VerificationToken;
 import IdealListaV2.IdealListaV2.repository.UserRepository;
 import IdealListaV2.IdealListaV2.repository.VerificationTokenRepository;
 import IdealListaV2.IdealListaV2.security.JwtProvider;
+import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.Optional;
