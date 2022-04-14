@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import IdealListaV2.IdealListaV2.model.FileDB;
 import IdealListaV2.IdealListaV2.model.Song;
 import IdealListaV2.IdealListaV2.repository.SongRepository;
 import lombok.AllArgsConstructor;

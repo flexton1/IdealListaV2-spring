@@ -29,11 +29,12 @@ public class FileController {
   @Autowired
   private FileStorageService storageService;
  
-  @PostMapping("/upload")
-  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+  @PostMapping("/upload/{playlist}")
+  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,
+  @PathVariable String playlist) {
     String message = "";
     try {
-      storageService.store(file);
+      storageService.store(file, playlist);
       message = "Uploaded the file successfully: " + file.getOriginalFilename();
       return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
     } catch (Exception e) {
@@ -50,11 +51,8 @@ public class FileController {
           .path(dbFile.getId())
           .toUriString();
           return new ResponseFile( 
-            dbFile.getId(),         
-            dbFile.getName(),
-            fileDownloadUri,
-            dbFile.getType(),
-            dbFile.getData().length);
+           dbFile.getName(),
+           fileDownloadUri);
     }).collect(Collectors.toList());
     return ResponseEntity.status(HttpStatus.OK).body(files);
   }

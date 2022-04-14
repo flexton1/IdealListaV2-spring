@@ -18,19 +18,19 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Like {
+public class Likke {
     // private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(generator="uuid1")
     @GenericGenerator(name="uuid1", strategy="uuid2")
-    private String Id;
+    private String UId;
     private Integer noOfLike=0;
 
     //ManyToMany Mapping (Many users can give like to many songs)
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
         joinColumns = { @JoinColumn(name = "userId") }, 
-        inverseJoinColumns = { @JoinColumn(name = "likeId") }
+        inverseJoinColumns = { @JoinColumn(name = "likeUId") }
     )
     private List<User> likedUser;
     
@@ -51,7 +51,7 @@ public class Like {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Like other = (Like) obj;
+        Likke other = (Likke) obj;
         if (likedUser == null) {
             return other.likedUser == null;
         } else return likedUser.equals(other.likedUser);

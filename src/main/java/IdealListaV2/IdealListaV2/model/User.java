@@ -48,7 +48,7 @@ public class User implements Serializable {
     //ManyToMany Mapping (Many users can give like to many songs)
     @ManyToMany(mappedBy = "likedUser")
     @ToString.Exclude
-    private List<Like> like; 
+    private List<Likke> like; 
     //ManyToMany Mapping (Many users can add to playlist many songs)
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(

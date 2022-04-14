@@ -8,36 +8,29 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-
 @Entity
-@Table(name = "files")
-public class FileDB {
+@Table(name = "profilePictures")
+public class ProfilePicFile {
   @Id
   @GeneratedValue(generator = "uuid")
   @GenericGenerator(name = "uuid", strategy = "uuid2")
   private String id;
-  private String name;
   private String type;
-  private String playlist;
+  private String userName;
   @Lob
   private byte[] data;
-  public FileDB() {
+  public ProfilePicFile() {
   }
-  public FileDB(String name, String type, byte[] data, String playlist) {
-    this.name = name;
+  public ProfilePicFile(String type, byte[] data, String userName) {
+   this.userName = userName;
     this.type = type;
     this.data = data;
-    this.playlist = playlist;
   }
   public String getId() {
     return id;
   }
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  
+ 
   public String getType() {
     return type;
   }
@@ -50,10 +43,10 @@ public class FileDB {
   public void setData(byte[] data) {
     this.data = data;
   }
-  public String getPlaylist(){
-    return playlist;
+  public String getUserName(){
+      return this.userName;
   }
-  public void setPlaylist(String playlist){
-    this.playlist = playlist;
+  public void setUsername(String userName){
+      this.userName = userName;
   }
 }

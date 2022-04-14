@@ -9,16 +9,18 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import IdealListaV2.IdealListaV2.model.FileDB;
+import IdealListaV2.IdealListaV2.model.ProfilePicFile;
 import IdealListaV2.IdealListaV2.repository.FileDBRepository;
+import IdealListaV2.IdealListaV2.repository.ProfilePicRepository;
 
 @Service
 public class FileStorageService {
   @Autowired
   private FileDBRepository fileDBRepository;
-  private SongService songService;
-  public FileDB store(MultipartFile file) throws IOException {
+  private ProfilePicRepository pictureRepository;
+  public FileDB store(MultipartFile file, String playlist) throws IOException {
     String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-    FileDB FileDB = new FileDB(fileName, file.getContentType(), file.getBytes());
+    FileDB FileDB = new FileDB(fileName, file.getContentType(), file.getBytes(), playlist);
     // songService.addMusic(FileDB, fileName); dont work
     return fileDBRepository.save(FileDB);
   }
@@ -29,6 +31,19 @@ public class FileStorageService {
   public Stream<FileDB> getAllFiles() {
     return fileDBRepository.findAll().stream();
   }
+
+  public ProfilePicFile getPicture(String userName){
+    ProfilePicFile picture = pictureRepository.findByUserName(userName).orElse(null);
+    return picture;
+  }
+
+  public ProfilePicFile storePicture(MultipartFile file, String userName) throws IOException {
+    
+    ProfilePicFile FileDB = new ProfilePicFile(file.getContentType(), file.getBytes(), userName);
+    pictureRepository.save(FileDB);
+    return FileDB;
+  }
+
 }
     
 
