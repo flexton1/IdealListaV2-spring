@@ -35,8 +35,7 @@ public class FileStorageService {
   }
 
   public ProfilePicFile getPicture(String userName){
-    ProfilePicFile picture = pictureRepository.findByUserName(userName).orElse(null);
-    return picture;
+    return pictureRepository.findByUserName(userName).orElse(null);
   }
 
   public ProfilePicFile storePicture(MultipartFile file, String userName) throws IOException {
