@@ -42,8 +42,8 @@ public class FileStorageService {
   public ProfilePicFile storePicture(MultipartFile file, String userName) throws IOException {
     
     ProfilePicFile FileDB = new ProfilePicFile(file.getContentType(), file.getBytes(), userName);
-    pictureRepository.save(FileDB);
-    return FileDB;
+    return pictureRepository.save(FileDB);
+    
   }
 
 }
