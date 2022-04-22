@@ -17,6 +17,7 @@ import IdealListaV2.IdealListaV2.repository.ProfilePicRepository;
 public class FileStorageService {
   @Autowired
   private FileDBRepository fileDBRepository;
+  @Autowired
   private ProfilePicRepository pictureRepository;
  
  
@@ -34,13 +35,17 @@ public class FileStorageService {
     return fileDBRepository.findAll().stream();
   }
 
+
+
   public ProfilePicFile getPicture(String userName){
-    ProfilePicFile picture = pictureRepository.findByUserName(userName).orElse(null);
-    return picture;
+    return pictureRepository.findByUserName(userName).get();
   }
 
   public ProfilePicFile storePicture(MultipartFile file, String userName) throws IOException {
-    
+    if(pictureRepository.findByUserName(userName).isPresent()){
+      pictureRepository.delete(pictureRepository.findByUserName(userName).get());
+    }
+
     ProfilePicFile FileDB = new ProfilePicFile(file.getContentType(), file.getBytes(), userName);
     return pictureRepository.save(FileDB);
     

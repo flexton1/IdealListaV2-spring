@@ -24,7 +24,7 @@ public class ProfilePicController {
     @Autowired
     private FileStorageService storageService;
 
-    @GetMapping("/{userName)")
+    @GetMapping("/{userName}")
     public ResponseEntity<byte[]> getProfilePic(@PathVariable String userName){
         ProfilePicFile fileDB = storageService.getPicture(userName);
         return ResponseEntity.ok()
