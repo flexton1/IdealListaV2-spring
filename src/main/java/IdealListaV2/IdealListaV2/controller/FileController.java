@@ -52,7 +52,9 @@ public class FileController {
           .toUriString();
           return new ResponseFile( 
            dbFile.getName(),
-           fileDownloadUri);
+           fileDownloadUri,
+          dbFile.getPlaylist()
+          );
     }).collect(Collectors.toList());
     return ResponseEntity.status(HttpStatus.OK).body(files);
   }
