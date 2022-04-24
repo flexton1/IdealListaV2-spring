@@ -20,6 +20,6 @@ public class ResponseFile {
       return link;
     }
 
-    public String getPlaylist() {return playlist;};
+    public String getPlaylist() {return playlist;}
    
   }

@@ -22,6 +22,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name= "ideallista_users")
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
